@@ -48,6 +48,7 @@ This project provides a system to manage alerts programmatically with defined ac
    ```bash
    docker push your-dockerhub-username/alert-manager:v1
    ```
+   Update the same docker image in deployment-k8s.yaml for alert-manager  deployment.
 
 5. **Deploy Prometheus:**
 
