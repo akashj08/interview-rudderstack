@@ -147,16 +147,3 @@ To add new alert handling flows:
 
 Please fork the repository and submit a pull request with detailed information on the changes made.
 
-### License
-
-This project is licensed under the MIT License.
-
----
-
-I'll now save this updated README to your project directory.
-
-The updated `README.md` file has been successfully created and saved in the project directory. You can download it [here](sandbox:/mnt/data/interview-rudderstack-main/README.md).
-
-This README includes all the necessary steps, including deploying the Prometheus server using the provided Helm chart, updating the Slack webhook URL and Prometheus URL in the Kubernetes manifest, and testing the deployment.
-
-If you need any more changes or assistance, feel free to ask!
