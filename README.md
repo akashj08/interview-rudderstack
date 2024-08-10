@@ -17,7 +17,6 @@ This project provides a system to manage alerts programmatically with defined ac
      - Sending a notification to Slack.
      - Forwarding the alert to PagerDuty.
      - Automatic remediation actions (e.g., scaling resources).
-    <img width="887" alt="Screenshot 2024-08-06 at 7 25 38 PM" src="https://github.com/user-attachments/assets/e0134cf2-8256-4bcd-9a05-cbc5eeeca91a">
 
 
 ### Getting Started
