@@ -45,7 +45,7 @@ metadata:
     app: alert-manager
 type: Opaque
 data:
-  slack_webhook_url: "XXXXXXXXXXXXXXXXXXX"  # Replace with the base64-encoded Slack Webhook URL
+  slack_webhook_url: "XXXXXXXXXXXXXXXXXXX"  # Replace with the base64-encoded Slack Webhook URL : https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK
 
 
 ---
