@@ -1,4 +1,4 @@
-## Alert Manager
+<img width="1383" alt="Screenshot 2024-08-11 at 2 09 53 AM" src="https://github.com/user-attachments/assets/98e79a33-382f-4402-a9e5-2e6efb4d73f6">## Alert Manager
 
 ### Overview
 
@@ -17,8 +17,8 @@ This project provides a system to manage alerts programmatically with defined ac
      - Sending a notification to Slack.
      - Forwarding the alert to PagerDuty.
      - Automatic remediation actions (e.g., scaling resources).
-![Uploading Screenshot 2024-08-11 at 2.09.53 AM.png…]()
 
+<img width="1383" alt="Screenshot 2024-08-11 at 2 09 53 AM" src="https://github.com/user-attachments/assets/6a19329a-8e8b-40c0-b6b9-0704fd847b89">
 
 ### Getting Started
 
