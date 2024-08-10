@@ -1,4 +1,3 @@
-<img width="1383" alt="Screenshot 2024-08-11 at 2 09 53 AM" src="https://github.com/user-attachments/assets/98e79a33-382f-4402-a9e5-2e6efb4d73f6">## Alert Manager
 
 ### Overview
 
@@ -24,7 +23,7 @@ This project provides a system to manage alerts programmatically with defined ac
 
 #### Prerequisites
 
-- **Docker** installted
+- **Docker** installed
 - **Kubernetes Cluster** (e.g., kind, Minikube, EKS , GKE etc.)
 - **kubectl** and **helm** installed
 - **Prometheus** and **Alertmanager** deployed in the cluster
@@ -37,17 +36,17 @@ This project provides a system to manage alerts programmatically with defined ac
    git clone https://github.com/your-repo/alert-manager.git
    cd alert-manager
    ```
-   Update the app.py as per you requirement . Just build the docke image
+   Update the app.py as per you requirement . Just build the docker imager
 3. **Build the Docker Image:**
 
    ```bash
-   docker build -t your-dockerhub-username/alert-manager:latest .
+   docker build -t your-dockerhub-username/alert-manager:v1 .
    ```
 
 4. **Push the Docker Image:**
 
    ```bash
-   docker push your-dockerhub-username/alert-manager:latest
+   docker push your-dockerhub-username/alert-manager:v1
    ```
 
 5. **Deploy Prometheus:**
@@ -55,7 +54,8 @@ This project provides a system to manage alerts programmatically with defined ac
    - Deploy Prometheus using the provided Helm chart inside the `helm-chart/` folder:
 
      ```bash
-     helm install prometheus-server helm-chart/prometheus/
+     kubectl create  ns monitor
+     helm install prometheus helm-chart/prometheus/  -n monitor
      ```
 
 6. **Update Kubernetes Manifest:**
@@ -87,21 +87,7 @@ This project provides a system to manage alerts programmatically with defined ac
      kubectl apply -f deployment-k8s.yaml
      ```
 
-   - Alternatively, use the Helm chart:
-
-     ```bash
-     helm install alert-manager helm-chart/
-     ```
-
-8. **Set Up Slack Webhook:**
-
-   - Create a Kubernetes secret for the Slack webhook URL:
-     
-     ```bash
-     kubectl create secret generic alert-manager-secrets --from-literal=slack_webhook_url=your_slack_webhook_url -n alert-manager
-     ```
-
-9. **Test the Setup:**
+8. **Test the Setup:**
 
    - Forward the service port to your localhost:
 
@@ -137,6 +123,11 @@ This project provides a system to manage alerts programmatically with defined ac
        "status": "firing"
      }'
      ```
+
+     Reponse : 
+      ```
+      {"status":"success"}
+      ```
 
    - Verify that the alert is processed and that a notification is sent to Slack.
 
