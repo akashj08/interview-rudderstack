@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 # Get environment variables
 slack_webhook_url = os.getenv("SLACK_WEBHOOK_URL")
 prometheus_url = os.getenv("PROMETHEUS_URL")  # e.g., http://prometheus-server:9090
+app_port = int(os.getenv("APP_PORT", 5000))  # Default to port 5000 if not set
 
 # Function to fetch resource utilization data from Prometheus
 def fetch_resource_utilization(namespace, pod_name):
@@ -66,6 +67,11 @@ def send_to_slack(message):
     else:
         logger.error("Failed to send message to Slack")
 
+# Health check endpoint
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "healthy"}), 200
+
 # Endpoint to receive alerts
 @app.route('/alert', methods=['POST'])
 def receive_alert():
@@ -93,4 +99,4 @@ def receive_alert():
         return jsonify({"status": "ignored"}), 200
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=app_port)

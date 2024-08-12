@@ -11,7 +11,7 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Make port 5000 available to the world outside this container
-EXPOSE 5000
+#EXPOSE 5000
 
 # Define environment variable for Flask to run
 ENV FLASK_APP=app.py
@@ -19,5 +19,9 @@ ENV FLASK_APP=app.py
 # Disable Python output buffering
 ENV PYTHONUNBUFFERED=1
 
-# Run app.py when the container launches
-CMD ["flask", "run", "--host=0.0.0.0"]
+
+# Set default port (you can override this at runtime)
+ENV APP_PORT=5000
+
+# Use a shell form of CMD to allow environment variable substitution
+CMD flask run --host=0.0.0.0 --port=$APP_PORT
