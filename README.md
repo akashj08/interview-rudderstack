@@ -1,3 +1,4 @@
+### Alert-System
 
 ### Overview
 
@@ -36,7 +37,7 @@ This project provides a system to manage alerts programmatically with defined ac
    git clone https://github.com/your-repo/alert-manager.git
    cd alert-manager
    ```
-   Update the app.py as per you requirement . Just build the docker imager
+   Update the app.py as per your requirement. Just build the docker image
 3. **Build the Docker Image:**
 
    ```bash
@@ -48,7 +49,7 @@ This project provides a system to manage alerts programmatically with defined ac
    ```bash
    docker push your-dockerhub-username/alert-manager:v1
    ```
-   Update the same docker image in deployment-k8s.yaml for alert-manager  deployment.
+   Update the same docker image in deployment-k8s.yaml for alert-manager  k8s deployment manifest.
 
 5. **Deploy Prometheus:**
 
