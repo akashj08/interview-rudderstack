@@ -133,13 +133,44 @@ This project provides a system to manage alerts programmatically with defined ac
 
    - Verify that the alert is processed and that a notification is sent to Slack.
 
-### Extending the System
+## Extending the System
 
-To add new alert handling flows:
+### Adding New Alert Handling Flows:
 
-1. **Add a New Function:** Extend the enrichment logic by adding a new function in the `alert-manager` module.
-2. **Update the Webhook Handler:** Integrate the new function in the webhook handling logic.
-3. **Document the Changes:** Update this README and the code documentation to reflect the new handling pipeline.
+#### 1. Add a New Function:
+Extend the enrichment logic by adding a new function in `app.py`. This function should query new data sources or perform additional processing on the alert data.
+
+Example:
+```python
+def fetch_custom_metrics(namespace, pod_name):
+    query = f'custom_query{{namespace="{namespace}", pod="{pod_name}"}}'
+    result = query_prometheus(query)
+    return result
+```
+
+#### 2. Update the Webhook Handler:
+Integrate the new function into the webhook handling logic.
+
+Example:
+```python
+def enrich_alert_data(alert):
+    namespace = alert['labels'].get('namespace')
+    pod_name = alert['labels'].get('pod')
+    custom_metrics = fetch_custom_metrics(namespace, pod_name)
+    alert['enriched_data']['custom_metrics'] = custom_metrics
+    return alert
+```
+
+#### 3. Document the Changes:
+Update this README and the code documentation to reflect the new handling pipeline.
+
+### API Call Details:
+
+- **Endpoint**: `/alert`
+- **Method**: `POST`
+- **Request Body**: JSON object containing alert data. The payload should follow the format expected by the system, which includes labels, annotations, and other alert metadata.
+- **Response**: A JSON object indicating the success or failure of the alert processing.
+
 
 ### Observability
 
