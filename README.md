@@ -94,7 +94,7 @@ This project provides a system to manage alerts programmatically with defined ac
    - Forward the service port to your localhost:
 
      ```bash
-     kubectl port-forward svc/alert-manager 8080:80 -n alert-manager
+     kubectl port-forward svc/alert-manager 8080:8080 -n alert-manager
      ```
 
    - Send a test alert to the webhook:
